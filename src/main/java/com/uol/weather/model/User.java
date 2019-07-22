@@ -20,7 +20,7 @@ class User {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer idade;
 
-    @JsonIgnoreProperties({"id"})
+    @JsonIgnoreProperties({"id", "ip", "distance", "woeid", "latitude", "longitude"})
     @OneToOne
     private Location location;
 
