@@ -2,6 +2,7 @@ package com.uol.weather.service;
 
 
 import com.uol.weather.exception.UserNotFoundException;
+import com.uol.weather.model.Location;
 import com.uol.weather.model.User;
 import com.uol.weather.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private LocationService locationService;
+
 
     public User findUserById(Integer userId){
         Optional<User> user = userRepository.findById(userId);
@@ -33,19 +38,22 @@ public class UserService {
     }
 
     public User updateUser(User user) {
+
         User foundUser = findUserById(user.getId());
-        if(user.getNome()!=null){
+
+        if(user.getNome() !=null){
             foundUser.setNome(user.getNome());
         }
 
-        if(user.getIdade()!=null){
+        if(user.getIdade() !=null){
             foundUser.setIdade(user.getIdade());
         }
 
-        if(user.getLocation()!=null){
-            foundUser.setLocation(user.getLocation());
+        if(locationService.isValid(user.getLocation())){
+            Location location = locationService.updateLocation(user.getLocation(), foundUser.getLocation().getId());
+            foundUser.setLocation(location);
         }
-        return userRepository.save(user);
+        return userRepository.save(foundUser);
     }
 
     public void deleteUser(Integer userId) {

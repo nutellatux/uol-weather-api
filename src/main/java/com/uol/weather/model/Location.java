@@ -17,9 +17,6 @@ class Location {
     private Integer id;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String status;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String latitude;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -32,16 +29,16 @@ class Location {
     private String distance;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String title;
+    private String city;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String woeid;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String min_temp;
+    private String minTemp;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String max_temp;
+    private String maxTemp;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer user;

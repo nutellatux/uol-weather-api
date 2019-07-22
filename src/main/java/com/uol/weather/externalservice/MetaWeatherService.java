@@ -25,7 +25,7 @@ public class MetaWeatherService {
 
     private static final Logger LOG = LoggerFactory.getLogger(MetaWeatherService.class);
 
-    public String getWOEId(String latitudeByIp, String longitudeByIp) throws IOException {
+    public Location getWOEId(String latitudeByIp, String longitudeByIp) throws IOException {
 
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(
@@ -73,10 +73,15 @@ public class MetaWeatherService {
             for (Map<String, Object> mapMetaWeather : listMapMetaWeather) {
                 location.setDistance(mapMetaWeather.get("distance").toString());
                 location.setWoeid(mapMetaWeather.get("woeid").toString());
-                location.setTitle(mapMetaWeather.get("title").toString());
+                location.setCity(mapMetaWeather.get("title").toString());
                 locationList.add(location);
             }
-            return locationList.get(0).getWoeid();
+
+            if(location.getCity() == null){
+                return locationList.get(1);
+            }
+            return locationList.get(0);
+
         } else {
             LOG.error("500 Internal Server Error");
             return null;
@@ -138,8 +143,8 @@ public class MetaWeatherService {
 //            location.setMin_temp((String) listMapMetaWeather.get(0).get("min_temp"));
 //            location.setMin_temp((String) listMapMetaWeather.get(0).get("max_temp"));
             for (Map<String, Object> mapMetaWeather : listMapMetaWeather) {
-                location.setMin_temp(mapMetaWeather.get("min_temp").toString());
-                location.setMax_temp(mapMetaWeather.get("max_temp").toString());
+                location.setMinTemp(mapMetaWeather.get("min_temp").toString());
+                location.setMaxTemp(mapMetaWeather.get("max_temp").toString());
                 locationList.add(location);
             }
             return locationList.get(0);
