@@ -43,4 +43,86 @@ class Location {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer user;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public String getDistance() {
+		return distance;
+	}
+
+	public void setDistance(String distance) {
+		this.distance = distance;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getWoeid() {
+		return woeid;
+	}
+
+	public void setWoeid(String woeid) {
+		this.woeid = woeid;
+	}
+
+	public String getMinTemp() {
+		return minTemp;
+	}
+
+	public void setMinTemp(String minTemp) {
+		this.minTemp = minTemp;
+	}
+
+	public String getMaxTemp() {
+		return maxTemp;
+	}
+
+	public void setMaxTemp(String maxTemp) {
+		this.maxTemp = maxTemp;
+	}
+
+	public Integer getUser() {
+		return user;
+	}
+
+	public void setUser(Integer user) {
+		this.user = user;
+	}
+    
+    
+
 }
